@@ -1,7 +1,5 @@
 public class Superhero
 {
-    //Scanner sc = new Scanner(System.in);
-
     private String heroName;
     private String realName;
     private String superpower;
