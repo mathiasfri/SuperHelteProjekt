@@ -18,23 +18,28 @@ public class Main
                     9. Afslut
                     """);
 
-            int menuInput = sc.nextInt();
+            int menuInput = Integer.parseInt(sc.nextLine());
 
             if (menuInput == 1) {
                 System.out.println("Hvad skal din superhelts heltenavn være?");
-                String heroName = sc.next();
+                String heroName = sc.nextLine();
 
                 System.out.println("Hvad er din superhelts rigtige navn?");
-                String realName = sc.next();
-                sc.nextLine();
+                String realName = sc.nextLine();
 
                 System.out.println("Hvad er din superhelts superkraft?");
-                String superpower = sc.next();
+                String superpower = sc.nextLine();
 
                 System.out.println("Hvad er din superhelts alder?");
-                int age = sc.nextInt();
+                int age = Integer.parseInt(sc.nextLine());
 
                 db.addSuperhero(heroName, realName, superpower, age);
+            }
+
+            if (menuInput == 2)
+            {
+                System.out.println("Liste over dine superhelte:\n");
+                db.listSuperHeroes();
             }
 
             if (menuInput == 9) {

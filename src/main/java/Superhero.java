@@ -44,4 +44,13 @@ public class Superhero
     public void setAge(int age){
         this.age = age;
     }
+
+    @Override
+    public String toString() {
+        return
+                "Superheltenavn: " + heroName + "\n" +
+                "Virkelige navn: " + realName + "\n" +
+                "Superkraft: " + superpower + "\n" +
+                "Alder: " + age;
+    }
 }
