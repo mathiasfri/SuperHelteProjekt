@@ -51,6 +51,6 @@ public class Superhero
                 "Superheltenavn: " + heroName + "\n" +
                 "Virkelige navn: " + realName + "\n" +
                 "Superkraft: " + superpower + "\n" +
-                "Alder: " + age;
+                "Alder: " + age + "\n";
     }
 }

@@ -5,6 +5,7 @@ public class Main
     static Scanner sc = new Scanner(System.in);
     static Database db = new Database();
     static int menuInput;
+    static String superheroSearch;
 
     public static void main(String[] args)
     {
@@ -15,6 +16,7 @@ public class Main
             System.out.println("""
                     1. Opret en Superhelt
                     2. Se liste over superhelte
+                    3. Søg efter superhelt
                     9. Afslut
                     """);
 
@@ -36,13 +38,20 @@ public class Main
                 db.addSuperhero(heroName, realName, superpower, age);
             }
 
-            if (menuInput == 2)
+            else if (menuInput == 2)
             {
                 System.out.println("Liste over dine superhelte:\n");
                 db.listSuperHeroes();
             }
 
-            if (menuInput == 9) {
+            else if (menuInput == 3)
+            {
+                System.out.println("Skriv dit søgekriterie for din superhelt: ");
+                superheroSearch = sc.nextLine();
+                db.searchSuperHeroes();
+            }
+
+            else if (menuInput == 9) {
                 System.out.print("Du har nu afsluttet. Farvel");
                 System.exit(0);
             }
