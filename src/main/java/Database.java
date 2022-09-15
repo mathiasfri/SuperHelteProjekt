@@ -7,8 +7,7 @@ public class Database
 
     public void addSuperhero(String heroName, String realName, String superpower, int age)
     {
-        Superhero s1 = new Superhero(heroName, realName, superpower, age);
-        superheroes.add(s1);
+        superheroes.add(new Superhero(heroName, realName, superpower, age));
     }
 
     public void listSuperHeroes()
@@ -24,29 +23,39 @@ public class Database
         boolean found = false;
         for (Superhero superhero : superheroes)
         {
-            if (superhero.getHeroName().equals(Main.superheroSearch))
+            if (superhero.getHeroName().contains(UserInterface.superheroSearch))
             {
-                System.out.println("Superhelt fundet ved hjælp af heltenavn: \n" + superhero);
+                ArrayList<Superhero> sortedArray = new ArrayList<>();
+                int i = 1;
+
+                if (superhero.getHeroName().contains(UserInterface.superheroSearch))
+                {
+                    sortedArray.add(superhero);
+                }
+                for (Superhero sa : superheroes)
+                {
+                    System.out.println(i++ + ": \n" + sa);
+                }
                 found = true;
             }
-            else if (superhero.getRealName().equals(Main.superheroSearch))
+            else if (superhero.getRealName().contains(UserInterface.superheroSearch))
             {
-                System.out.println("Superhelt fundet ved hjælp af rigtige navn: \n" + superhero);
+                System.out.println("Superhelt fundet ved hjælp af rigtige navn: \n" + superhero + "\n");
                 found = true;
             }
-            else if (superhero.getSuperpower().equals(Main.superheroSearch))
+            else if (superhero.getSuperpower().contains(UserInterface.superheroSearch))
             {
-                System.out.println("Superhelt fundet ved hjælp af superkraft: \n" + superhero);
+                System.out.println("Superhelt fundet ved hjælp af superkraft: \n" + superhero + "\n");
                 found = true;
             }
-            else if (Integer.toString(superhero.getAge()).equals(Main.superheroSearch))
+            else if (Integer.toString(superhero.getAge()).contains(UserInterface.superheroSearch))
             {
-                System.out.println("Superhelt fundet ved hjælp af alder: \n" + superhero);
+                System.out.println("Superhelt fundet ved hjælp af alder: \n" + superhero + "\n");
                 found = true;
             }
             else if (!found)
             {
-                System.out.println("Superhelt ikke fundet ved søgekriterie: " + Main.superheroSearch);
+                System.out.println("Superhelt ikke fundet ved søgekriterie: " + UserInterface.superheroSearch + "\n");
             }
         }
     }
