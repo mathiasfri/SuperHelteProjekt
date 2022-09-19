@@ -17,6 +17,7 @@ public class UserInterface
                     1. Opret en Superhelt
                     2. Se liste over superhelte
                     3. Søg efter superhelt
+                    4. Redigér superhelt
                     9. Afslut
                     """);
 
@@ -49,6 +50,13 @@ public class UserInterface
                 System.out.println("Skriv dit søgekriterie for din superhelt: ");
                 superheroSearch = sc.nextLine();
                 db.searchSuperHeroes();
+            }
+            else if(menuInput == 4)
+            {
+                System.out.println("Skriv superheltenavnet for den superhelt, som du vil redigere: ");
+                superheroSearch = sc.nextLine();
+                db.editSuperhero();
+                System.out.println("Redigering gennemført.\n");
             }
             else if (menuInput == 9)
             {

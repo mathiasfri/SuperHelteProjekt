@@ -1,9 +1,10 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Database
-{
+public class Database {
     private ArrayList<Superhero> superheroes = new ArrayList();
+    private ArrayList<Superhero> sortedArray = new ArrayList<>();
+    Scanner sc = new Scanner(System.in);
 
     public void addSuperhero(String heroName, String realName, String superpower, int age)
     {
@@ -18,22 +19,15 @@ public class Database
         }
     }
 
-    public void searchSuperHeroes()
-    {
+    public void searchSuperHeroes() {
         boolean found = false;
-        for (Superhero superhero : superheroes)
-        {
+        for (Superhero superhero : superheroes) {
             if (superhero.getHeroName().contains(UserInterface.superheroSearch))
             {
-                ArrayList<Superhero> sortedArray = new ArrayList<>();
                 int i = 1;
+                sortedArray.add(superhero);
 
-                if (superhero.getHeroName().contains(UserInterface.superheroSearch))
-                {
-                    sortedArray.add(superhero);
-                }
-                for (Superhero sa : superheroes)
-                {
+                for (Superhero sa : superheroes) {
                     System.out.println(i++ + ": \n" + sa);
                 }
                 found = true;
@@ -57,6 +51,59 @@ public class Database
             {
                 System.out.println("Superhelt ikke fundet ved søgekriterie: " + UserInterface.superheroSearch + "\n");
             }
+        }
+    }
+
+    public void editSuperhero() {
+        int i = 1;
+
+        for (Superhero superhero : superheroes)
+        {
+            if (superhero.getHeroName().contains(UserInterface.superheroSearch))
+            {
+                sortedArray.add(superhero);
+            }
+        }
+
+        for (Superhero sa : sortedArray)
+        {
+            System.out.println(i++ + ": \n" + sa);
+        }
+
+        System.out.println("Skriv nummeret på den superhelt du vil redigere: \n");
+        // inkluderer scanner, da metoden ville bliver kørt uden at have informationer og dermed giver fejl
+        String editNumber = Integer.toString(sc.nextInt());
+        Superhero superHeroEdit = sortedArray.get(Integer.parseInt(editNumber) - 1);
+        System.out.println("Redigerer følgende superhelt: \n\n" + superHeroEdit);
+        System.out.println("Skriv ny information og tryk ENTER. Hvis du ikke vil redigere, tryk ENTER.");
+        sc.nextLine();
+
+        System.out.print("Nyt superheltenavn: ");
+        String newName = sc.nextLine();
+        if (!newName.isEmpty())
+        {
+            superHeroEdit.setHeroName(newName);
+        }
+
+        System.out.print("Det nye rigtige navn på din superhelt: ");
+        String newRealName = sc.nextLine();
+        if (!newRealName.isEmpty())
+        {
+            superHeroEdit.setRealName(newRealName);
+        }
+
+        System.out.print("Ny superhelt superkraft: ");
+        String newSuperpower = sc.nextLine();
+        if (!newSuperpower.isEmpty())
+        {
+            superHeroEdit.setSuperpower(newSuperpower);
+        }
+
+        System.out.print("Nye alder på superhelt: ");
+        String newAge = sc.nextLine();
+        if (!newAge.isEmpty())
+        {
+            superHeroEdit.setAge(Integer.parseInt(newAge));
         }
     }
 }
