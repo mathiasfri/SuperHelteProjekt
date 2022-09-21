@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Database {
     public ArrayList<Superhero> superheroes = new ArrayList();
-    private ArrayList<Superhero> sortedArray = new ArrayList<>();
+    public ArrayList<Superhero> sortedArray = new ArrayList<>();
     Scanner sc = new Scanner(System.in);
 
     public void addSuperhero(String heroName, String realName, String superpower, int age)
@@ -134,6 +134,21 @@ public class Database {
             if (s.getHeroName().contains(heroname))
             {
                 return heroname;
+            }
+        }
+        return null;
+    }
+
+    public String findMultipleSuperheroes(String heroname)
+    {
+        for (Superhero s : superheroes)
+        {
+            if (s.getHeroName().contains(heroname))
+            {
+                if (superheroes.size() > 1)
+                {
+                    return heroname;
+                }
             }
         }
         return null;
