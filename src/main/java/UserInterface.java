@@ -4,12 +4,13 @@ public class UserInterface
 {
     static Scanner sc = new Scanner(System.in);
     static Database db = new Database();
-    static int menuInput;
+    int menuInput;
     static String superheroSearch;
 
     public void startProgram()
     {
-        do {
+        while(menuInput != 9)
+        {
             System.out.println("---------------------------------------------------");
             System.out.println("Velkommen til din SuperHelte database!");
             System.out.println("Menu - Vælg en valgmulighed");
@@ -21,48 +22,61 @@ public class UserInterface
                     9. Afslut
                     """);
 
-            int menuInput = Integer.parseInt(sc.nextLine());
+            try {
+                menuInput = Integer.parseInt(sc.nextLine());
 
-            if (menuInput == 1)
-            {
-                System.out.println("Hvad skal din superhelts heltenavn være?");
-                String heroName = sc.nextLine();
+                switch (menuInput) {
+                    case 1:
+                        boolean tryAgain = true;
+                        while (tryAgain) {
+                            try {
+                                System.out.println("Hvad skal din superhelts heltenavn være?");
+                                String heroName = sc.nextLine();
 
-                System.out.println("Hvad er din superhelts rigtige navn?");
-                String realName = sc.nextLine();
+                                System.out.println("Hvad er din superhelts rigtige navn?");
+                                String realName = sc.nextLine();
 
-                System.out.println("Hvad er din superhelts superkraft?");
-                String superpower = sc.nextLine();
+                                System.out.println("Hvad er din superhelts superkraft?");
+                                String superpower = sc.nextLine();
 
-                System.out.println("Hvad er din superhelts alder?");
-                int age = Integer.parseInt(sc.nextLine());
+                                System.out.println("Hvad er din superhelts alder?");
+                                int age = Integer.parseInt(sc.nextLine());
 
-                db.addSuperhero(heroName, realName, superpower, age);
+                                db.addSuperhero(heroName, realName, superpower, age);
+                                tryAgain = false;
+                            } catch (Exception e) {
+                                System.out.println("Du fik indtastet en forkert variabel. Start venligst forfra.\n");
+                            }
+                        }
+                        break;
+
+                    case 2:
+                        System.out.println("Liste over dine superhelte:\n");
+                        db.listSuperHeroes();
+                        break;
+
+                    case 3:
+                        System.out.println("Skriv dit søgekriterie for din superhelt: ");
+                        superheroSearch = sc.nextLine();
+                        db.searchSuperHeroes();
+                        break;
+
+                    case 4:
+                        System.out.println("Skriv superheltenavnet for den superhelt, som du vil redigere: ");
+                        superheroSearch = sc.nextLine();
+                        db.editSuperhero();
+                        System.out.println("Redigering gennemført.\n");
+                        break;
+
+                    case 9:
+                        System.out.print("Du har nu afsluttet. Farvel");
+                        System.exit(0);
+                }
             }
-
-            else if (menuInput == 2)
+            catch(Exception e)
             {
-                System.out.println("Liste over dine superhelte:\n");
-                db.listSuperHeroes();
+                System.out.println("Du har fået indtastet en forkert variabel. Prøv venligst igen.");
             }
-            else if (menuInput == 3)
-            {
-                System.out.println("Skriv dit søgekriterie for din superhelt: ");
-                superheroSearch = sc.nextLine();
-                db.searchSuperHeroes();
-            }
-            else if(menuInput == 4)
-            {
-                System.out.println("Skriv superheltenavnet for den superhelt, som du vil redigere: ");
-                superheroSearch = sc.nextLine();
-                db.editSuperhero();
-                System.out.println("Redigering gennemført.\n");
-            }
-            else if (menuInput == 9)
-            {
-                System.out.print("Du har nu afsluttet. Farvel");
-                System.exit(0);
-            }
-        } while (menuInput != 9);
+        }
     }
 }
