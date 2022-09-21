@@ -65,6 +65,11 @@ public class Database {
             {
                 sortedArray.add(superhero);
             }
+
+            else
+            {
+                System.out.println("Der findes ingen superhelte i databasen med dette navn.");
+            }
         }
 
         for (Superhero sa : sortedArray)
