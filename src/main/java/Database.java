@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Database {
-    private ArrayList<Superhero> superheroes = new ArrayList();
+    public ArrayList<Superhero> superheroes = new ArrayList();
     private ArrayList<Superhero> sortedArray = new ArrayList<>();
     Scanner sc = new Scanner(System.in);
 
@@ -125,5 +125,17 @@ public class Database {
                 System.out.println("Du fik indtastet en forkert variabel. Start venligst forfra.\n");
             }
         }
+    }
+
+    public String findSuperhero(String heroname)
+    {
+        for (Superhero s : superheroes)
+        {
+            if (s.getHeroName().contains(heroname))
+            {
+                return heroname;
+            }
+        }
+        return null;
     }
 }
