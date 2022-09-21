@@ -6,6 +6,7 @@ public class UserInterface
     static Database db = new Database();
     int menuInput;
     static String superheroSearch;
+    static int removeNumber;
 
     public void startProgram()
     {
@@ -19,6 +20,7 @@ public class UserInterface
                     2. Se liste over superhelte
                     3. Søg efter superhelt
                     4. Redigér superhelt
+                    5. Fjern superhelt fra database
                     9. Afslut
                     """);
 
@@ -66,6 +68,14 @@ public class UserInterface
                         superheroSearch = sc.nextLine();
                         db.editSuperhero();
                         System.out.println("Redigering gennemført.\n");
+                        break;
+
+                    case 5:
+                        System.out.println("Fjern en superhelt fra din database: \n");
+                        db.listSuperHeroes();
+                        System.out.print("Skriv nummeret på den superhelt, som du gerne vil fjerne fra databasen: ");
+                        removeNumber = Integer.parseInt(sc.nextLine());
+                        db.removeSuperhero();
                         break;
 
                     case 9:

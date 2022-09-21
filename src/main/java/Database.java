@@ -1,3 +1,6 @@
+import jdk.jfr.Label;
+
+import java.lang.annotation.Target;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -13,9 +16,13 @@ public class Database {
 
     public void listSuperHeroes()
     {
+        int i = 1;
+
+        superheroes.add(new Superhero("Superman", "Klark Kent", "strong, fly, laser-eyes", 25));
+        superheroes.add(new Superhero("Spiderman", "Peter Parker", "Spider powers", 16));
         for (Superhero superhero : superheroes)
         {
-            System.out.println(superhero);
+            System.out.println(i++ + ": \n" + superhero);
         }
     }
 
@@ -127,6 +134,15 @@ public class Database {
         }
     }
 
+    public void removeSuperhero()
+    {
+        superheroes.remove(UserInterface.removeNumber - 1);
+        System.out.println("Du har fjernet nummer " + UserInterface.removeNumber + " Fra databasen.");
+    }
+
+
+
+    // Simplificeret metode til UnitTest
     public String findSuperhero(String heroname)
     {
         for (Superhero s : superheroes)
@@ -139,6 +155,7 @@ public class Database {
         return null;
     }
 
+    // Simplificeret metode til UnitTest
     public String findMultipleSuperheroes(String heroname)
     {
         for (Superhero s : superheroes)
