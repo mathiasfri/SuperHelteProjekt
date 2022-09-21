@@ -1,6 +1,3 @@
-import jdk.jfr.Label;
-
-import java.lang.annotation.Target;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -137,7 +134,7 @@ public class Database {
     public void removeSuperhero()
     {
         superheroes.remove(UserInterface.removeNumber - 1);
-        System.out.println("Du har fjernet nummer " + UserInterface.removeNumber + " Fra databasen.");
+        System.out.println("Du har fjernet nummer " + UserInterface.removeNumber +  " nummer fra databasen:");
     }
 
 

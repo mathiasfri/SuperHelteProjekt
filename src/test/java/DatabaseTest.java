@@ -1,3 +1,5 @@
+import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class DatabaseTest
@@ -78,5 +80,21 @@ class DatabaseTest
 
         // Assert
         assertEquals(expectedDatabaseName, actualDatabaseName);
+    }
+
+    @Test
+    void removeSuperhero()
+    {
+        // Arrange
+        d.addSuperhero("Superman", "Klark Kent", "strong, fly, laser-eyes", 25);
+        d.addSuperhero("Spiderman", "Peter Parker", "Spider powers", 16);
+
+        // Act
+        int expectedDatabaseSize = 1;
+        d.superheroes.remove(1);
+        int actualDatabaseSize = d.superheroes.size();
+
+        // Assert
+        assertEquals(expectedDatabaseSize, actualDatabaseSize);
     }
 }
