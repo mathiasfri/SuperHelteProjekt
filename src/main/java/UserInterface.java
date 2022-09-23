@@ -19,7 +19,7 @@ public class UserInterface
                     1. Opret en Superhelt
                     2. Se liste over superhelte
                     3. Søg efter superhelt
-                    4. Redigér superhelt
+                    4. Rediger superhelt
                     5. Fjern superhelt fra database
                     9. Afslut
                     """);

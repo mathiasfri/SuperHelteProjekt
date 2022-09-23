@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Database {
-    public ArrayList<Superhero> superheroes = new ArrayList();
+    public ArrayList<Superhero> superheroes = new ArrayList<>();
     public ArrayList<Superhero> sortedArray = new ArrayList<>();
     Scanner sc = new Scanner(System.in);
 
@@ -15,8 +15,6 @@ public class Database {
     {
         int i = 1;
 
-        superheroes.add(new Superhero("Superman", "Klark Kent", "strong, fly, laser-eyes", 25));
-        superheroes.add(new Superhero("Spiderman", "Peter Parker", "Spider powers", 16));
         for (Superhero superhero : superheroes)
         {
             System.out.println(i++ + ": \n" + superhero);
