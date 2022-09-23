@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Database {
@@ -70,7 +71,7 @@ public class Database {
 
             else
             {
-                System.out.println("Der findes ingen superhelte i databasen med dette navn.");
+                System.out.println("Der findes ingen superhelte i databasen med dette navn.\n");
             }
         }
 
@@ -79,52 +80,56 @@ public class Database {
             System.out.println(i++ + ": \n" + sa);
         }
 
-        System.out.println("Skriv nummeret på den superhelt du vil redigere: \n");
-        // inkluderer scanner, da metoden ville blive kørt uden at have informationer og dermed give fejl.
-        String editNumber = Integer.toString(sc.nextInt());
-        Superhero superHeroEdit = sortedArray.get(Integer.parseInt(editNumber) - 1);
-        System.out.println("Redigerer følgende superhelt: \n\n" + superHeroEdit);
-        System.out.println("Skriv ny information og tryk ENTER. Hvis du ikke vil redigere, tryk ENTER.");
-        sc.nextLine();
-
-        boolean tryAgain = true;
-
-        while (tryAgain)
+        if (!sortedArray.isEmpty())
         {
-            try
+            System.out.println("Skriv nummeret på den superhelt du vil redigere: \n");
+            // inkluderer scanner, da metoden ville blive kørt uden at have informationer og dermed give fejl.
+            String editNumber = Integer.toString(sc.nextInt());
+            Superhero superHeroEdit = sortedArray.get(Integer.parseInt(editNumber) - 1);
+            System.out.println("Redigerer følgende superhelt: \n\n" + superHeroEdit);
+            System.out.println("Skriv ny information og tryk ENTER. Hvis du ikke vil redigere, tryk ENTER.");
+            sc.nextLine();
+
+            boolean tryAgain = true;
+
+            while (tryAgain)
             {
-                System.out.print("Nyt superheltenavn: ");
-                String newName = sc.nextLine();
-                if (!newName.isEmpty())
+                try
                 {
-                    superHeroEdit.setHeroName(newName);
-                }
+                    System.out.print("Nyt superheltenavn: ");
+                    String newName = sc.nextLine();
+                    if (!newName.isEmpty())
+                    {
+                        superHeroEdit.setHeroName(newName);
+                    }
 
-                System.out.print("Det nye rigtige navn på din superhelt: ");
-                String newRealName = sc.nextLine();
-                if (!newRealName.isEmpty())
-                {
-                    superHeroEdit.setRealName(newRealName);
-                }
+                    System.out.print("Det nye rigtige navn på din superhelt: ");
+                    String newRealName = sc.nextLine();
+                    if (!newRealName.isEmpty())
+                    {
+                        superHeroEdit.setRealName(newRealName);
+                    }
 
-                System.out.print("Ny superhelt superkraft: ");
-                String newSuperpower = sc.nextLine();
-                if (!newSuperpower.isEmpty())
-                {
-                    superHeroEdit.setSuperpower(newSuperpower);
-                }
+                    System.out.print("Ny superhelt superkraft: ");
+                    String newSuperpower = sc.nextLine();
+                    if (!newSuperpower.isEmpty())
+                    {
+                        superHeroEdit.setSuperpower(newSuperpower);
+                    }
 
-                System.out.print("Nye alder på superhelt: ");
-                String newAge = sc.nextLine();
-                if (!newAge.isEmpty())
-                {
-                    superHeroEdit.setAge(Integer.parseInt(newAge));
+                    System.out.print("Nye alder på superhelt: ");
+                    String newAge = sc.nextLine();
+                    if (!newAge.isEmpty())
+                    {
+                        superHeroEdit.setAge(Integer.parseInt(newAge));
+                    }
+                    tryAgain = false;
+                    System.out.println("Redigering gennemført.\n");
                 }
-                tryAgain = false;
-            }
-            catch (Exception e)
-            {
-                System.out.println("Du fik indtastet en forkert variabel. Start venligst forfra.\n");
+                catch (Exception e)
+                {
+                    System.out.println("Du fik indtastet en forkert variabel. Start venligst forfra.\n");
+                }
             }
         }
     }

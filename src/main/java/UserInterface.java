@@ -67,7 +67,6 @@ public class UserInterface
                         System.out.println("Skriv superheltenavnet for den superhelt, som du vil redigere: ");
                         superheroSearch = sc.nextLine();
                         db.editSuperhero();
-                        System.out.println("Redigering gennemført.\n");
                         break;
 
                     case 5:
